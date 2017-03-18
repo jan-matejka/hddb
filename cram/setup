@@ -1,0 +1,39 @@
+# vim: syn=sh
+
+export GIT_WORK_TREE="${CRAMTMP}/${TESTFILE}/git-wc"
+CRAMPATH="${CRAMTMP}/${TESTFILE}/path"
+export PATH="${CRAMPATH}:${PATH}"
+mkdir "${CRAMPATH}"
+
+. $(dirname $(dirname `which hdnews-add`))/lib/hdnews-lib
+
+function fake {
+    local p=${CRAMPATH}/"${1}"
+    printf "#! /usr/bin/env sh\n%s" "${2}" > "${p}"
+    chmod +x "${p}"
+}
+
+function fake_xsel {
+    fake xsel "echo '${1}'"
+}
+
+function fake_vim_add {
+    fake fake_vim_add "echo ${1} > \${1}/description"
+}
+
+function fake_vim_add_noop_succ {
+    fake fake_vim_add "exit 0"
+}
+
+function fake_git_commit_fail {
+    local p="${CRAMPATH}/git"
+    printf "#! /usr/bin/env sh\n" > "${p}"
+    printf "if  [[ \${1} = \"commit\" ]]; then\n" >> ${p}
+    printf "exit ${1}\n" >> ${p}
+    printf "else\n" >> ${p}
+    printf "/usr/bin/git \"\$@\"\n" >> ${p}
+    printf "fi" >> ${p}
+    chmod +x "${p}"
+}
+
+export HDNEWS_EDITOR_ADD="fake_vim_add"

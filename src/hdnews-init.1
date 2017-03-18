@@ -1,0 +1,34 @@
+.Dd Mar 20, 2017
+.Os
+.Dt HDNEWS-INIT 1
+.
+.Sh NAME
+.Nm hdnews-init
+.Nd Initialize a hdnews git database
+.
+.Sh DESCRIPTION
+.Xr git-init 1 at ${GIT_WORK_TREE} defaulting to ${XDG_DATA_HOME}/hdnews/git.
+.sp
+.Xr git-commit 1 a README file saying the repository is indeed a hdnews
+database and point to hdnews project github repository.
+.sp
+.Xr git-commit 1 a news/.last_id file with contents "0". This file says what
+the last used news id was, in the format of a decimal integer if greater
+than 0. 0 means no news record has been written.
+.Sh DIAGNOSTICS
+.Ex -std
+.Sh SEE ALSO
+.Bl
+.It
+.Xr hdnews-add 1 .
+.El
+.Sh LICENSE
+BSD-3
+.Lk https://github.com/yaccz/hdnews/blob/master/LICENSE
+.Sh AUTHORS
+.An Jan Matějka Aq Mt yac@blesmrt.net
+.Lk https://github.com/yaccz/hdnews/
+.Sh BUGS
+No doubt plentiful.
+Please report them at
+.Lk https://github.com/yaccz/hdnews/issues

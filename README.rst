@@ -1,4 +1,4 @@
-jmnews
+hdnews
 ######
 
 A program to store a link to an article, possibly a description and
