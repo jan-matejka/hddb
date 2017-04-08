@@ -27,11 +27,13 @@ $(BLIBDIR)/hdnews-lib: src/hdnews-lib
 	install -m755 -D $< $@
 
 .PHONY: install
-install:
+install: $(addprefix $(BINDIR)/hdnews-,$(CMDS))
 
 	install -m755 $(BLIBDIR)/hdnews-lib $(LIBDIR)
-	install -m755 $(BBINDIR)/hdnews-add $(BINDIR)
-	install -m755 $(BBINDIR)/hdnews-init $(BINDIR)
+
+$(BINDIR)/%:
+
+	install -m755 $(BBINDIR)/$(@F) $(BINDIR)
 
 .PHONY: clean
 clean:
