@@ -1,4 +1,0 @@
-#! /usr/bin/env sh
-
-. $(dirname $0)/../lib/hdnews-lib
-cli_${0##*hdnews-} "$@"
