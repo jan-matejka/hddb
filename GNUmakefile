@@ -13,7 +13,7 @@ BBINDIR  = $(BROOTDIR)/bin
 DIRS = $(BLIBDIR) $(BBINDIR)
 
 BLIB = $(BLIBDIR)/hdnews-lib
-CMDS = add init
+CMDS = add init git
 
 .PHONY: build
 build:  $(BLIB) $(addprefix $(BBINDIR)/hdnews-,$(CMDS))

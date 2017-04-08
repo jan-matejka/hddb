@@ -105,3 +105,7 @@ function cli_add {
     git add ${rp} ${LAST_ID_FILE} || return
     git commit ${rp} ${LAST_ID_FILE} -m "Add news ${new}"
 }
+
+function cli_git {
+    git "$@"
+}
