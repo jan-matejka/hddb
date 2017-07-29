@@ -16,8 +16,8 @@ BMANDIR    = $(BROOTDIR)/man/man1
 
 DIRS = $(BLIBDIR) $(BBINDIR)
 
-CMDS = $(patsubst src/hddb/%.sh,%,$(shell echo src/hddb/*))
-MANS = $(patsubst Documentation/%.rst,%.1,$(shell echo Documentation/hddb*))
+CMDS = $(patsubst src/hddb/%.sh,%,$(wildcard src/hddb/*))
+MANS = $(patsubst Documentation/%.rst,%.1,$(wildcard Documentation/hddb*))
 
 .PHONY: build
 build:  $(BMANDIR) $(BBINDIR)/hddb $(addprefix $(BBINDIR)/hddb-,$(CMDS)) $(addprefix $(BMANDIR)/,$(MANS))
